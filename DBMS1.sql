@@ -1,107 +1,124 @@
---Å×ÀÌºí¼³°èÇ¥ / Å×ÀÌºí±âº»µ¥ÀÌÅÍ
-create table emp(u_id varchar(8) primary key, name varchar(20) not null, password varchar(20)not null, position varchar(4)not null, workplace varchar(20)not null, address varchar(50), birth DATE DEFAULT CURRENT_DATE, regday DATE DEFAULT CURRENT_DATE, wedday DATE DEFAULT CURRENT_DATE);
-
-insert into emp values('A1001',	'°­¹üÁØ','a1234','A','°­³²±¸','½Å»çµ¿912','1979-12-25','2003-02-17',null);	
-insert into emp values('A1002',	'±Ç¹ÎÁö','a3421','B','°­µ¿±¸','°­ÀÏµ¿128','1987-1-8','2010-2-28','2015-2-28');	
-insert into emp values('A1003',	'±èµ¿¿¬','b1111','B','°­ºÏ±¸','¼öÀ¯µ¿100','1984-9-23','2007-11-15','2013-11-15');	
-insert into emp values('A1004',	'±è¹Î½Ä','c456','D','°­¼­±¸','È­°î1µ¿37','2000-8-4','2021-9-26',null);	
-insert into emp values('A1005',	'±è¹Î¾Æ','z675','C','°ü¾Ç±¸','³­°îµ¿67','1994-11-13','2018-1-5',null);	
-insert into emp values('A1006',	'±èÀÀ¿ø','q789','A','±¤Áø±¸','´Éµ¿13','1980-8-19','2003-10-11','2009-10-11');	
-insert into emp values('A1007',	'±èÇÊ±Ô','g478','B','±¸·Î±¸','°íÃ´1µ¿178','1983-7-7','2006-8-30','2012-8-30');	
-insert into emp values('A1008',	'¹Úµ¿ºó','d666','C','±İÃµ±¸','µ¶»ê1µ¿75','1996-9-4','2019-10-27',null);	
-insert into emp values('A1009',	'¹Ú¹ü¼ö','e964','A','³ë¿ø±¸','»ó°èµ¿777','1981-3-5','2004-4-27',null);	
-insert into emp values('A1010',	'¹ÚÀº¼º','h369','D','µµºÀ±¸','½Ö¹®3µ¿888','2001-4-27','2021-6-19',null);	
-
+create table emp (u_id varchar(20) not null primary key,name varchar(20) not null,pw varchar(20) not null, position varchar(4) not null, workplace varchar(20) not null, address varchar(50), birth date  ,regday date, wedday date );
 
 select * from emp;
+drop table emp;
 
-create table sal(u_id varchar(8) primary key, salary number(10) not null, from_date DATE, to_date DATE);
-insert into sal values('A1001',	4000000,'2022-5-1','2022-5-31');	
-insert into sal values('A1002',	3600000,'2022-5-1','2022-5-31');	
-insert into sal values('A1003',	3500000,'2022-5-1','2022-5-31');
-insert into sal values('A1004',	3350000,'2022-5-1','2022-5-31');
-insert into sal values('A1005',	3450000,'2022-5-1','2022-5-31');
-insert into sal values('A1006',	3750000,'2022-5-1','2022-5-31');
-insert into sal values('A1007',	3550000,'2022-5-1','2022-5-31');
-insert into sal values('A1008',	3400000,'2022-5-1','2022-5-31');
-insert into sal values('A1009',	3700000,'2022-5-1','2022-5-31');
-insert into sal values('A1010',	3150000,'2022-5-1','2022-5-31');
-
-select * from sal;
-
-create table member(id varchar(12) primary key, password varchar(12) not null, name varchar(20) not null, address varchar(100), tel varchar(20) not null, reg_date DATE DEFAULT CURRENT_DATE);
-	
+create table member1 (id varchar(12) primary key,pw varchar(12) not null, name varchar(20) not null, addr varchar(100), tel varchar(20) not null, regday date default sysdate);
+drop table member
 select * from member;
 
-create table book(bookid number(10) primary key, bookkind varchar(3) not null, booktitle varchar(50) not null, bookprice number(10) not null, bookcount number(5) not null, author varchar(20), pubcom varchar(20), pubdate DATE);
+create table sal(u_id varchar(8)primary key, salary number(10) not null,from_date date, "to_date" date);
 
+select * from sal;
+alter table sal rename column "to_date" to "TO_DATE";
+
+create table book(bookid number(10) primary key ,bookkind varchar(3) not null,booktitle varchar(50) not null, bookcount number(5) not null,author varchar(20),pubcon varchar(20),pubdate date);
+drop table book;
+--ì‹œí€€ìŠ¤ ìƒì„±--
+create sequence seq increment by 1 start with 1minvalue 1maxvalue 9999 nocycle;
+insert into book
 select * from book;
 
---Á¾ÇÕ½Ç½À1
+insert into emp values ('A1001','ê°•ë²”ì¤€','a1234','A','ê°•ë‚¨êµ¬','ì‹ ì‚¬ë™ 912','1979/12/25','2003/2/17',null);
+insert into emp values ('A1002'   ,'ê¶Œë¯¼ì§€','a3421','B','ê°•ë™êµ¬','ê°•ì¼ë™ 128','1987/01/08','2010/2/28','2015/2/28');
+insert into emp values ('B1003','ê¹€ë™ì—°','b1111','B','ê°•ë¶êµ¬','ìˆ˜ìœ ë™1004',   '1984/9/23','2007/11/15','2013/11/15');
+insert into emp values ('B1004','ê¹€ë¯¼ì‹',   'c456','D','ê°•ì„œêµ¬','í™”ê³¡1ë™37','2000/8/4','2021/9/26',null);
+insert into emp values ('C1005','ê¹€ë¯¼ì•„',   'z675','C','ê´€ì•…êµ¬','ë‚œê³¡ë™ 67','1994/11/13','2018/1/5',null);
+insert into emp values ('C1006','ê¹€ì‘ì›',   'q789','A','ê´‘ì§„êµ¬','ëŠ¥ë™ 13','1980/8/19','2003/10/11','2009/10/11');
+insert into emp values ('D1007','ê¹€í•„ê·œ',   'g478','B','êµ¬ë¡œêµ¬','ê³ ì²™1ë™ 178','1983/7/7','2006/8/30','2012/8/30');
+insert into emp values ('D1008','ë°•ë™ë¹ˆ',   'd666','B','ê¸ˆì²œêµ¬','ë…ì‚°1ë™ 75','1996/9/4','2019/10/27',null);
+insert into emp values ('E1009','ë°•ë²”ìˆ˜',   'e964','A','ë…¸ì›êµ¬','ìƒê³„ë™ 777','1981/3/5','2004/4/27',null);
+insert into emp values ('E1010','ë°•ì€ì„±',   'h369','D','ë„ë´‰êµ¬','ìŒë¬¸3ë™ 888','2001/4/27','2021/6/19',null);
 
-create table member1(id varchar(12)primary key, password varchar(12)not null, name varchar(20) not null, address varchar(100), tel varchar(20)not null, req_date DATE DEFAULT sysdate);
+--sal ì— ë¡œìš° ë„£ê¸°
+insert into sal values('A1001',4000000,'2022-05-01','2022-05-31');
+insert into sal values('A1002',3600000,'2022-05-01','2022-05-31');
+insert into sal values('B1003',3500000,'2022-05-01','2022-05-31');
+insert into sal values('B1004',3350000,'2022-05-01','2022-05-31');
+insert into sal values('C1005',3450000,'2022-05-01','2022-05-31');
+insert into sal values('C1006',3750000,'2022-05-01','2022-05-31');
+insert into sal values('D1007',3550000,'2022-05-01','2022-05-31');
+insert into sal values('D1008',3400000,'2022-05-01','2022-05-31');
+insert into sal values('E1009',3700000,'2022-05-01','2022-05-31');
+insert into sal values('E1010',3150000,'2022-05-01','2022-05-31');
 
-insert into member1 values('bgh', 'a1234', '¹è°ïÈñ', '½Å»çµ¿912', '010-1111-2222', '2023-09-13');
-insert into member1 values('yjh', 'a3421', 'À¯Á¤È¯', '°­ÀÏµ¿128', '010-2222-3333', '2023-09-13');
-insert into member1 values('lmk', 'b1111', 'ÀÌ¹Î±Ô', '¼öÀ¯µ¿1004', '010-3333-4444', '2023-09-14');
-insert into member1 values('lsh', 'c456', 'ÀÌ¼ºÇÏ', 'È­°î1µ¿37', '010-4444-5555', '2023-09-15');
-insert into member1 values('lyj', 'z675', 'ÀÌ¿¬Á¤', '³­°îµ¿67', '010-4444-2222', '2023-09-11');
-insert into member1 values('lyl', 'q789', 'ÀÌ¿¹¸°', '´Éµ¿13', '010-5555-6666', '2023-09-15');
-insert into member1 values('lws', 'g478', 'ÀÌ¿ø¼®', '°íÃ´1µ¿178', '010-6666-7777', '2023-09-13');
-insert into member1 values('ljh', 'd666', 'ÀÌÁ¤Èñ', 'µ¶»ê1µ¿75', '010-7777-8888', '2023-09-14');
-insert into member1 values('ljw', 'e964', 'ÀÌÁ¾¿ì', '»ó°èµ¿777', '02-5555-2222', '2023-09-05');
-insert into member1 values('jib', 'h369', 'ÀåÀÎ¹ü', '½Ö¹®3µ¿888', '010-8888-9999', '2023-09-16');
+----ì¢…í•©ì‹¤ìŠµ------
+---member1í…Œì´ë¸” ë§Œë“¤ê¸°--
+create table member1(id varchar(12) primary key,pw varchar(12) not null,name varchar(20) not null, addr varchar(100), tel varchar(20) not null, regday date default sysdate);
+--member1í…Œì´ë¸” í™•ì¸--
+select * from member1;
+drop table member1;
 
-insert into member1 values('kkt', 'a1004', '±è±âÅÂ', '°¡»êµ¿', '010-1004-1004', '2023-09-12');
+--member1 ê°’ ë„£ê¸°--
+insert into member1 values('bgh','a1234,''ë°°ê³¤í¬','ì‹ ì‚¬ë™ 912','010-1111-2222','2023-09-13');
+insert into member1 values('yjh','a3421','ìœ ì •í™˜','ê°•ì¼ë™ 128','02-2222-3333',   '2023-09-13');
+insert into member1 values('lmk','b1111','ì´ë¯¼ê·œ','ìˆ˜ìœ ë™ 1004','010-3333-4444','2023-09-14');
+insert into member1 values('lsh','c456','ì´ì„±í•˜','í™”ê³¡1ë™ 37','010-4444-5555',   '2023-09-15');
+insert into member1 values('lyj','z675','ì´ì—°ì •','ë‚œê³¡ë™ 67','02-4444-2222','2023-09-11');
+insert into member1 values('lyl','q789','ì´ì˜ˆë¦°','ëŠ¥ë™ 13','010-5555-6666','2023-09-15');
+insert into member1 values('lws','g478','ì´ì›ì„','ê³ ì²™1ë™ 178','010-6666-7777','2023-09-13');
+insert into member1 values('ljh','d666','ì´ì •í¬','ë…ì‚°1ë™ 75','010-7777-8888','2023-09-14');
+insert into member1 values('ljw','e964','ì´ì¢…ìš°','ìƒê³„ë™ 777','02-5555-2222','2023-09-05');
+insert into member1 values('jib','h369','ì¥ì¸ë²”','ìŒë¬¸3ë™ 888','010-8888-9999','2023-09-16');
+alter table member1 add pt int default 0;
+select * from member1;
 
-
--- number¾²¸é ¿¡·¯ / int·Î ÅëÀÏ(ÀÚ¸®¼ö´Â »ó°ü¾ø´Ù.)
-create table book1(bookid int primary key, bookkind varchar(3) not null, booktitle varchar(50) not null, bookprice int not null, bookcount int not null, author varchar(30), pubcom varchar(20), pubdate DATE);
-create sequence sseq increment by 1 start with 1;
-
-insert into book1 values(sseq.nextval, 'IT', 'ÀÌ°ÍÀÌ ÀÚ¹Ù´Ù', 30000, 10, '½Å¿ë±Ç', 'ÇÑºû¹Ìµğ¾î', '2021-08-20');
-insert into book1 values(sseq.nextval, 'IT', 'ÀÚ¹ÙÀ¥°³¹ß¿öÅ©ºÏ', 31500, 19, '±¸¸Û°¡°ÔÄÚµù´Ü', '³²°¡¶÷ºÏ½º', '2022-08-04');
-insert into book1 values(sseq.nextval, 'NV', 'ÇÏ¾óºó', 14400, 15, '½Å¿ë±Ç', '±èÈÆ', '2022-08-03');
-insert into book1 values(sseq.nextval, 'NV', 'ºÒÆíÇÑÆíÀÇÁ¡', 12600, 10, '±èÈ£¿¬', '³ª¹«¿·ÀÇÀÚ', '2022-08-10');
-insert into book1 values(sseq.nextval, 'DV', '¿ªÇàÀÚ', 15750, 8, '½Å¿ë±Ç', 'ÀÚÃ»', '2022-05-30');
-insert into book1 values(sseq.nextval, 'DV', 'ÀÚ¼Ò¼­¹ÙÀÌºí', 18000, 15, 'ÀÌÇü', '¿£¾Ëµğ', '2022-08-25');
-insert into book1 values(sseq.nextval, 'HC', '¹ú°Å¹şÀºÇÑ±¹»ç', 17500, 10, 'tvn', 'ÇÁ·±Æ®ÆäÀÌÁö', '2022-08-22');
-insert into book1 values(sseq.nextval, 'HC', '³­ÁßÀÏ±â', 14000, 30, 'ÀÌ¼ø½Å', '½ºÅ¸ºÏ½º', '2022-07-27');
-insert into book1 values(sseq.nextval, 'TC', 'ÁøÂ¥¾²´Â½Ç¹«¿¢¼¿', 20000, 10, 'ÀüÁø±Ç', 'Á¦ÀÌÆà', '2022-02-15');
-insert into book1 values(sseq.nextval, 'TC', 'ºòµ¥ÀÌÅÍÀÎ°øÁö´É', 25000, 15, '¹ÚÇØ¼±', 'ÇÑºû¹Ìµğ¾î', '2020-12-21');
-
-insert into book1 values(sseq.nextval, 'IT', '½ºÇÁ¸µÇÁ·¹ÀÓ¿öÅ©', 38000, 8, '±è±âÅÂ', 'Á¤º¹»ç', '2022-09-10');
-
---drop table book1;
---drop sequence sseq;
---alter table book1 modify author varchar(30);
-
+---ë„ì„œ(book1)table ë§Œë“¤ê¸°--
+create table book1(bookid int primary key ,bookkind varchar(3) not null,booktitle varchar(100) not null, bookprice int not null,bookcount int not null,author varchar(100),pubcon varchar(40),pubdate date);
+--book1 table í™•ì¸--
 select * from book1;
-
-
-create table sales(sno int primary key, bno int not null, id varchar(12) not null, amount int default 1 not null, money int, salesday DATE DEFAULT sysdate);
+drop table book1;
+--ì‹œí€€ìŠ¤ ìƒì„±--
 create sequence bseq increment by 1 start with 1;
-insert into sales values(bseq.nextval, 1, 'lhy', 1, 300000, sysdate);
-insert into sales values(bseq.nextval, 2, 'ykh', 1, 598500, sysdate);
-insert into sales values(bseq.nextval, 1, 'jjs', 2, 600000, sysdate);
-insert into sales values(bseq.nextval, 9, 'lhy', 1, 200000, sysdate);
-insert into sales values(bseq.nextval, 2, 'cmj', 5, 2992500, sysdate);
-insert into sales values(bseq.nextval, 2, 'jjs', 3, 1795500, sysdate);
-insert into sales values(bseq.nextval, 3, 'yjh', 2, 432000, sysdate);
-insert into sales values(bseq.nextval, 5, 'hsy', 4, 504000, sysdate);
-insert into sales values(bseq.nextval, 4, 'nsy', 8, 1008000, sysdate);
-insert into sales values(bseq.nextval, 1, 'jbj', 3, 900000, sysdate);
-insert into sales values(bseq.nextval, 2, 'kyj', 4, 2394000, sysdate);
-insert into sales values(bseq.nextval, 7, 'lhn', 1, 175000, sysdate);
-insert into sales values(bseq.nextval, 8, 'hth', 2, null, sysdate);
-insert into sales values(bseq.nextval, 10, 'cmj',51, null, sysdate);
-insert into sales values(bseq.nextval, 1, 'lhy', 3, null, sysdate);
-insert into sales values(bseq.nextval, 2, 'cmj', 2, null, sysdate);
-insert into sales values(bseq.nextval, 2, 'lhy', 1, null, sysdate);
-insert into sales values(bseq.nextval, 1, 'vkh', 3, null, sysdate);
+--ë„ì„œ(book1) ë°ì´í„° ê°’ ë„£ê¸°--
+insert into book1 values (bseq.nextval,'IT','ì´ê²ƒì´ ìë°”ë‹¤'   ,30000,   10,   'ì‹ ìš©ê¶Œ',   'í•œë¹›ë¯¸ë””ì–´','2021-08-20');
+insert into book1 values (bseq.nextval,'IT',   'ìë°”ì›¹ê°œë°œì›Œí¬ë¶',31500,19,'êµ¬ë©ê°€ê²Œì½”ë”©ë‹¨','ë‚¨ê°€ëŒë¶ìŠ¤','2022-08-04');
+insert into book1 values (bseq.nextval,'NV',   'í•˜ì–¼ë¹ˆ',   14400,15,'ê¹€í›ˆ','ë¬¸í•™ë™ë„¤','2022-08-03');
+insert into book1 values (bseq.nextval,'NV','ë¶ˆí¸í•œí¸ì˜ì ',   12600,10,'ê¹€í˜¸ì—°','ë‚˜ë¬´ì˜†ì˜ì','2022-08-10');
+insert into book1 values (bseq.nextval,'DV',   'ì—­í–‰ì',   15750,8,'ìì²­','ì›…ì§„ì¶œíŒ',   '2022-05-30');
+insert into book1 values (bseq.nextval,'DV',   'ìì†Œì„œë°”ì´ë¸”',18000,15,'ì´í˜•','ì—”ì•Œë””','2022-08-25');
+insert into book1 values (bseq.nextval,'HC',   'ë²Œê±°ë²—ì€í•œêµ­ì‚¬',17500,10,   'tvn','í”„ëŸ°íŠ¸í˜ì´ì§€','2022-08-22');
+insert into book1 values (bseq.nextval,'HC',   'ë‚œì¤‘ì¼ê¸°',14000,30,'ì´ìˆœì‹ ','ìŠ¤íƒ€ë¶ìŠ¤','2022-07-27');
+insert into book1 values (bseq.nextval,'TC',   'ì§„ì§œì“°ëŠ”ì‹¤ë¬´ì—‘ì…€',20000,10,'ì „ì§„ê¶Œ','ì œì´í','2022-02-15');
+insert into book1 values (bseq.nextval,'TC',   'ë¹…ë°ì´í„°ì¸ê³µì§€ëŠ¥',25000,15,'ë°•í•´ì„ ','í•œë¹›ë¯¸ë””ì–´','2020-12-21');
 
-insert into sales values(bseq.nextval, 1, 'kkt', 2, 600000, sysdate); 
+
+
+
+
+
+--sale table í™•ì¸--
+select * from sales;
+drop table sales;
+--íŒë§¤(sales)table ë§Œë“¤ê¸°--
+create table sales(sno int primary key, bno int not null, id varchar(12) not null, amount int default 1 not null, money int, salesday timestamp DEFAULT sysdate);
+create sequence sseq increment by 1 start with 1;
+insert into sales values(sseq.nextval, 1, 'bgh', 1, null, sysdate);
+insert into sales values(sseq.nextval, 2, 'lmk', 1, null, sysdate);
+insert into sales values(sseq.nextval, 1, 'lsh', 2, null, sysdate);
+insert into sales values(sseq.nextval, 9, 'lyj', 1, null, sysdate);
+insert into sales values(sseq.nextval, 2, 'lyl', 5, null, sysdate);
+insert into sales values(sseq.nextval, 2, 'ljh', 3, null, sysdate);
+insert into sales values(sseq.nextval, 3, 'ljw', 2, null, sysdate);
+insert into sales values(sseq.nextval, 5, 'jib', 4, null, sysdate);
+insert into sales values(sseq.nextval, 4, 'lmk', 8, null, sysdate);
+insert into sales values(sseq.nextval, 1, 'bgh', 3, null, sysdate);
+insert into sales values(sseq.nextval, 2, 'lmk', 4, null, sysdate);
+insert into sales values(sseq.nextval, 7, 'lyl', 1, null, sysdate);
+insert into sales values(sseq.nextval, 8, 'ljw', 2, null, sysdate);
+insert into sales values(sseq.nextval, 10, 'jib',5, null, sysdate);
+insert into sales values(sseq.nextval, 1, 'lmk', 3, null, sysdate);
+insert into sales values(sseq.nextval, 2, 'jib', 2, null, sysdate);
+insert into sales values(sseq.nextval, 2, 'lyj', 1, null, sysdate);
+insert into sales values(sseq.nextval, 1, 'jib', 3, null, sysdate);
+
+update sales set money=(select bookprice from book1 where bookid=sales.bno)*amount;
+--9ë²ˆ ê±°ë˜ : 100800, ìˆ˜ëŸ‰ : 8, ë„ì„œê°€ê²© : 12600
+select bookprice from book1 where bookid=4;
+
+
+insert into sales values(sseq.nextval, 1, 'kkt', 2, null, sysdate); 
 
 select * from sales;
---drop table sales;
---drop sequence bseq;
+drop table sales;
+drop sequence sseq;

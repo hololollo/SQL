@@ -1,55 +1,55 @@
--- Å×ÀÌºí »ı¼º
+-- í…Œì´ë¸” ìƒì„±
 create table member(no int not null, id varchar(20) primary key, pw varchar(300), 
 		name varchar(100), birth timestamp, email varchar(300));
--- ½ÃÄö½º »ı¼º        
+-- ì‹œí€€ìŠ¤ ìƒì„±        
 create sequence c##test123.mem_seq increment by 1 start with 1 minvalue 1 maxvalue 9999 nocycle;
 
--- µ¥ÀÌÅÍ Ãß°¡
-insert into member values (mem_seq.nextval, 'kim', '1234', '±è±âÅÂ', '1981-12-25', 'kkt@gmail.com');
-insert into member values (mem_seq.nextval, 'park', '1004', '¹Úµ¿¼ö', '1998-03-25', 'park@naver.com');
-insert into member values (mem_seq.nextval, 'lee', '1212', 'ÀÌ¿¬Á¤', '1979-08-15', 'lee@daum.net');
-insert into member values (mem_seq.nextval, 'cho', '2848', 'Á¶´ë½Å', '1989-04-05', 'cho@gmail.com');
-insert into member values (mem_seq.nextval, 'yu', '7979', 'À¯Á¤È¯', '1995-10-15', 'yu@naver.com');
-insert into member values (mem_seq.nextval, 'bae', '0909', '¹è°ïÈñ', '1999-03-26', 'bae@gmail.com');
+-- ë°ì´í„° ì¶”ê°€
+insert into member values (mem_seq.nextval, 'kim', '1234', 'ê¹€ê¸°íƒœ', '1981-12-25', 'kkt@gmail.com');
+insert into member values (mem_seq.nextval, 'park', '1004', 'ë°•ë™ìˆ˜', '1998-03-25', 'park@naver.com');
+insert into member values (mem_seq.nextval, 'lee', '1212', 'ì´ì—°ì •', '1979-08-15', 'lee@daum.net');
+insert into member values (mem_seq.nextval, 'cho', '2848', 'ì¡°ëŒ€ì‹ ', '1989-04-05', 'cho@gmail.com');
+insert into member values (mem_seq.nextval, 'yu', '7979', 'ìœ ì •í™˜', '1995-10-15', 'yu@naver.com');
+insert into member values (mem_seq.nextval, 'bae', '0909', 'ë°°ê³¤í¬', '1999-03-26', 'bae@gmail.com');
 
--- µ¥ÀÌÅÍ °Ë»ö
+-- ë°ì´í„° ê²€ìƒ‰
 select * from member;
 select id,name,birth from member;
 
--- »ıÀÏ(birth)ÀÌ 1980³â»ı~1985³â»ıÀÎ È¸¿øÀÇ id, name ÄÃ·³ °Ë»ö
+-- ìƒì¼(birth)ì´ 1980ë…„ìƒ~1985ë…„ìƒì¸ íšŒì›ì˜ id, name ì»¬ëŸ¼ ê²€ìƒ‰
 select id,name from member 
 where birth between '1980-01-01' and '1985-12-31';
 
--- id¿¡ i³ª e°¡ Æ÷ÇÔµÈ È¸¿øÀÇ id,name ÄÃ·³À» °Ë»ö
+-- idì— ië‚˜ eê°€ í¬í•¨ëœ íšŒì›ì˜ id,name ì»¬ëŸ¼ì„ ê²€ìƒ‰
 select id,name from member 
 where id like '%i%' or id like '%e%';
--- id like 'i%' : i·Î ½ÃÀÛÇÏ´Â
--- id like '%i' : i·Î ³¡³ª´Â
+-- id like 'i%' : ië¡œ ì‹œì‘í•˜ëŠ”
+-- id like '%i' : ië¡œ ëë‚˜ëŠ”
 
--- id°¡ 'kim','lee','cho','park' ÀÎ È¸¿ø(member) Á¤º¸¸¦ °Ë»ö
+-- idê°€ 'kim','lee','cho','park' ì¸ íšŒì›(member) ì •ë³´ë¥¼ ê²€ìƒ‰
 select * from member 
 where id='kim' or id='lee' or id='cho' or id='park';
 
--- id°¡ 'kim','lee','cho' ÀÎ È¸¿ø(member) Á¤º¸¸¦ °Ë»ö
+-- idê°€ 'kim','lee','cho' ì¸ íšŒì›(member) ì •ë³´ë¥¼ ê²€ìƒ‰
 select * from member 
 where id in ('kim','lee','cho');
 
--- id°¡ 'kim','lee','cho' ¾Æ´Ñ È¸¿ø(member) Á¤º¸¸¦ °Ë»ö
+-- idê°€ 'kim','lee','cho' ì•„ë‹Œ íšŒì›(member) ì •ë³´ë¥¼ ê²€ìƒ‰
 select * from member 
 where id not in ('kim','lee','cho');
 
--- ÄÃ·³¸íÀÌ ³Ê¹« ±æ°Å³ª ¼ö½ÄÀÌ³ª ÇÔ¼ö¸¦ Àû¿ëÇÏ¿© ÄÃ·³À» ±¸¼ºÇÒ °æ¿ì 
--- ÄÃ·³¿¡ ´ëÇÑ alias(º°Äª)¸¦ ºÙÀÏ ¼ö ÀÖ´Ù.
--- È¸¿ø(member) Å×ÀÌºí·Î ºÎÅÍ id, name, ÀÌ¸§ Áß¿¡¼­ ¼º¾¾¸¦ °Ë»ö
+-- ì»¬ëŸ¼ëª…ì´ ë„ˆë¬´ ê¸¸ê±°ë‚˜ ìˆ˜ì‹ì´ë‚˜ í•¨ìˆ˜ë¥¼ ì ìš©í•˜ì—¬ ì»¬ëŸ¼ì„ êµ¬ì„±í•  ê²½ìš° 
+-- ì»¬ëŸ¼ì— ëŒ€í•œ alias(ë³„ì¹­)ë¥¼ ë¶™ì¼ ìˆ˜ ìˆë‹¤.
+-- íšŒì›(member) í…Œì´ë¸”ë¡œ ë¶€í„° id, name, ì´ë¦„ ì¤‘ì—ì„œ ì„±ì”¨ë¥¼ ê²€ìƒ‰
 select id,name,substr(name,1,1) as surname from member;
--- java¿¡¼­ rs.getString("surname"); Ã³·³ alias·Î È£ÃâÇØ¾ßÇÔ
+-- javaì—ì„œ rs.getString("surname"); ì²˜ëŸ¼ aliasë¡œ í˜¸ì¶œí•´ì•¼í•¨
 
 select * from member;
 
--- id°¡ 'lee'ÀÎ È¸¿øÀÇ ÀÌ¸ŞÀÏ(email)À» 'lee@naver.com'·Î º¯°æ
+-- idê°€ 'lee'ì¸ íšŒì›ì˜ ì´ë©”ì¼(email)ì„ 'lee@naver.com'ë¡œ ë³€ê²½
 update member set email='lee@naver.com' where id='lee';
 
--- id°¡ 'kim'ÀÎ È¸¿øÀ» °­Á¦Å»ÅğÇÏµµ·Ï ÇÑ´Ù.
+-- idê°€ 'kim'ì¸ íšŒì›ì„ ê°•ì œíƒˆí‡´í•˜ë„ë¡ í•œë‹¤.
 delete from member where id='kim';
 
 alter table member add regdate timestamp default sysdate;
@@ -74,10 +74,10 @@ desc temp1;
 
 create table temp2(no int, name varchar(200), point int);
 
-insert into temp2 values (1, '±è', 90);
-insert into temp2 values (2, '¹Ú', 80);
-insert into temp2 values (3, 'ÃÖ', 85);
-insert into temp2(name, point) values ('ÀÌ', 75);
+insert into temp2 values (1, 'ê¹€', 90);
+insert into temp2 values (2, 'ë°•', 80);
+insert into temp2 values (3, 'ìµœ', 85);
+insert into temp2(name, point) values ('ì´', 75);
 
 select * from temp2;
 
@@ -88,24 +88,24 @@ alter table temp2 add constraints key1 primary key (no);
 create table emp(no int, name varchar(100), pcode int,
 constraints key2 primary key (no));
 
-insert into emp values (1, '±è', 1);
-insert into emp values (2, 'ÀÌ', 2);
-insert into emp values (3, 'ÀÌ', 3);
-insert into emp values (4, 'ÀÌ', 4);
-insert into emp values (5, 'ÀÌ', 5);
+insert into emp values (1, 'ê¹€', 1);
+insert into emp values (2, 'ì´', 2);
+insert into emp values (3, 'ì´', 3);
+insert into emp values (4, 'ì´', 4);
+insert into emp values (5, 'ì´', 5);
 
-update emp set name='¹Ú' where no=3;
-update emp set name='ÃÖ' where no=4;
-update emp set name='Á¶' where no=5;
+update emp set name='ë°•' where no=3;
+update emp set name='ìµœ' where no=4;
+update emp set name='ì¡°' where no=5;
 
 create table pos(pcode int primary key, pname varchar(100));
 
-insert into pos values (1, 'ÀÌ»ç');
-insert into pos values (2, 'ºÎÀå');
-insert into pos values (3, '°úÀå');
-insert into pos values (4, '»ç¿ø');
+insert into pos values (1, 'ì´ì‚¬');
+insert into pos values (2, 'ë¶€ì¥');
+insert into pos values (3, 'ê³¼ì¥');
+insert into pos values (4, 'ì‚¬ì›');
 
-insert into pos values (5, 'ÀÎÅÏ');
+insert into pos values (5, 'ì¸í„´');
 
 select * from emp;
 select * from pos;
@@ -124,69 +124,69 @@ desc emp;
 
 commit;
 
--- ºäÀÇ »ı¼º
+-- ë·°ì˜ ìƒì„±
 create view view_emp as select * from emp;
 
 select * from emp;
 select * from view_emp;
 
--- ºä »ı¼º2
+-- ë·° ìƒì„±2
 create view view_emp2 as select * from emp where no>=3;
 select * from emp where no>=3;
 select * from view_emp2;
 
--- ºä Á¦°Å
+-- ë·° ì œê±°
 drop view view_emp;
--- ºä ¼öÁ¤ : create or replace view view_emp2 as select * from emp where no>=2 or name like '%ÀÌ%';
+-- ë·° ìˆ˜ì • : create or replace view view_emp2 as select * from emp where no>=2 or name like '%ì´%';
 
--- ½ÃÄö½º(ÀÚµ¿¼ø¹ø) »ı¼º/¼öÁ¤/Á¦°Å/Àû¿ë/Á¶È¸
--- ½ÃÄö½º »ı¼º
+-- ì‹œí€€ìŠ¤(ìë™ìˆœë²ˆ) ìƒì„±/ìˆ˜ì •/ì œê±°/ì ìš©/ì¡°íšŒ
+-- ì‹œí€€ìŠ¤ ìƒì„±
 create sequence emp_seq increment by 1
 start with 6 minvalue 1 maxvalue 9999 nocycle;
 
 select * from emp;
 
--- ½ÃÄö½º ¼öÁ¤
--- alter sequence emp_seq ¼öÁ¤ÇÒ³»¿ë
+-- ì‹œí€€ìŠ¤ ìˆ˜ì •
+-- alter sequence emp_seq ìˆ˜ì •í• ë‚´ìš©
 alter sequence emp_seq increment by 1;
 
--- ½ÃÄö½º Á¦°Å
+-- ì‹œí€€ìŠ¤ ì œê±°
 drop sequence emp_seq;
 
--- emp_seq ÀÇ ½ÃÄö½º Á¤º¸ Á¶È¸
+-- emp_seq ì˜ ì‹œí€€ìŠ¤ ì •ë³´ ì¡°íšŒ
 select * from all_sequences where sequence_name = 'EMP_SEQ';
 
 select * from emp;
 
--- emp Å×ÀÌºí¿¡ noÀÇ °ªÀ» ´ÙÀ½ ¼ø¹ø(nextval)À¸·Î Àû¿ëÇÏ¿© ·¹ÄÚµå Ãß°¡
-insert into emp values (emp_seq.nextval, '°í', 3); 
+-- emp í…Œì´ë¸”ì— noì˜ ê°’ì„ ë‹¤ìŒ ìˆœë²ˆ(nextval)ìœ¼ë¡œ ì ìš©í•˜ì—¬ ë ˆì½”ë“œ ì¶”ê°€
+insert into emp values (emp_seq.nextval, 'ê³ ', 3); 
 
--- ÇöÀç ½ÃÄö½º°ª Á¶È¸
+-- í˜„ì¬ ì‹œí€€ìŠ¤ê°’ ì¡°íšŒ
 select emp_seq.currval from dual;
 
--- Å×ÀÌºí º¹Á¦(´Ü, Á¦¾àÁ¶°ÇÀº º¹Á¦°¡ µÇÁö ¾ÊÀ½)
+-- í…Œì´ë¸” ë³µì œ(ë‹¨, ì œì•½ì¡°ê±´ì€ ë³µì œê°€ ë˜ì§€ ì•ŠìŒ)
 create table emp2 as select * from emp;
 
 desc emp2;
 
 select * from emp2;
 
--- no ÄÃ·³À» ±âº»Å°·Î ¼³Á¤
+-- no ì»¬ëŸ¼ì„ ê¸°ë³¸í‚¤ë¡œ ì„¤ì •
 alter table emp2 modify no int primary key;
 
--- ³»ºÎÁ¶ÀÎ(inner join)
+-- ë‚´ë¶€ì¡°ì¸(inner join)
 select a.no, a.name, b.pname 
 from emp a inner join pos b on a.pcode=b.pcode; 
 
--- ¿ÜºÎÁ¶ÀÎ1(left outer join)
+-- ì™¸ë¶€ì¡°ì¸1(left outer join)
 select a.no, a.name, b.pname 
 from emp a left outer join pos b on a.pcode=b.pcode; 
 
--- ¿ÜºÎÁ¶ÀÎ2(right outer join)
+-- ì™¸ë¶€ì¡°ì¸2(right outer join)
 select a.no, a.name, b.pname 
 from emp a right outer join pos b on a.pcode=b.pcode; 
 
--- ¿¬°üÄõ¸®
+-- ì—°ê´€ì¿¼ë¦¬
 select a.no, a.name, b.pname
 from emp a, pos b where a.pcode=b.pcode;
 
@@ -195,55 +195,55 @@ from emp, pos where emp.pcode=pos.pcode;
 
 select * from emp2;
 delete from emp2 where no=3 or no=5;
-insert into emp2 values(7, '¿À', 4);
-insert into emp2 values(8, 'Á¤', 5);
+insert into emp2 values(7, 'ì˜¤', 4);
+insert into emp2 values(8, 'ì •', 5);
 
 
--- ¼­ºêÄõ¸® = ÀÌÁßÄõ¸®
--- ¼­ºêÄõ¸®(emp2 Å×ÀÌºí¿¡ Á¸ÀçÇÏ´Â no¸¸ emp Å×ÀÌºí Á¶È¸) => ÀÏÄ¡Äõ¸®(±³ÁıÇÕ)
+-- ì„œë¸Œì¿¼ë¦¬ = ì´ì¤‘ì¿¼ë¦¬
+-- ì„œë¸Œì¿¼ë¦¬(emp2 í…Œì´ë¸”ì— ì¡´ì¬í•˜ëŠ” noë§Œ emp í…Œì´ë¸” ì¡°íšŒ) => ì¼ì¹˜ì¿¼ë¦¬(êµì§‘í•©)
 select no, name from emp
 where no in (select no from emp2);
 
--- ¼­ºêÄõ¸®(emp2 Å×ÀÌºí¿¡ Á¸ÀçÇÏÁö ¾Ê´Â no¸¸ emp Å×ÀÌºí Á¶È¸) => ºÒÀÏÄ¡Äõ¸®(Â÷ÁıÇÕ)
+-- ì„œë¸Œì¿¼ë¦¬(emp2 í…Œì´ë¸”ì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” noë§Œ emp í…Œì´ë¸” ì¡°íšŒ) => ë¶ˆì¼ì¹˜ì¿¼ë¦¬(ì°¨ì§‘í•©)
 select no, name from emp
 where name not in (select name from emp2);
 
 select * from emp;
 select * from emp2;
 
-select * from emp, pos; -- µÎ Å×ÀÌºí °£ÀÇ product - emp:6, pos:5 => 6*5=30
+select * from emp, pos; -- ë‘ í…Œì´ë¸” ê°„ì˜ product - emp:6, pos:5 => 6*5=30
 
 update emp set pcode=4 where no=4 or no=6 or no=2;
 
 select pcode, count(emp.no) as cnt 
 from emp group by pcode;
 
--- ±×·ìÈ­ÇÏ´Â Ç×¸ñ°ú Ãâ·ÂµÇ´Â ±×·ì Ç×¸ñÀÌ ´Ş¶ó¼­(¿À·ù)
+-- ê·¸ë£¹í™”í•˜ëŠ” í•­ëª©ê³¼ ì¶œë ¥ë˜ëŠ” ê·¸ë£¹ í•­ëª©ì´ ë‹¬ë¼ì„œ(ì˜¤ë¥˜)
 select pos.pname, count(emp.no) as cnt
 from pos, emp where pos.pcode = emp.pcode
 group by pos.pcode;
 
 
--- Á÷À§º° ÀÎ¿ø¼ö join¹® -> ±×·ìÈ­ÇÏ´Â Ç×¸ñ : Á÷À§¸í(pname)
+-- ì§ìœ„ë³„ ì¸ì›ìˆ˜ joinë¬¸ -> ê·¸ë£¹í™”í•˜ëŠ” í•­ëª© : ì§ìœ„ëª…(pname)
 select pos.pname, count(emp.no) as cnt
 from pos inner join emp on pos.pcode = emp.pcode
 group by pos.pname;
 
--- Á÷À§º° ÀÎ¿ø¼ö ¿¬°üÄõ¸® -> ±×·ìÈ­ÇÏ´Â Ç×¸ñ : Á÷À§¸í(pname)
+-- ì§ìœ„ë³„ ì¸ì›ìˆ˜ ì—°ê´€ì¿¼ë¦¬ -> ê·¸ë£¹í™”í•˜ëŠ” í•­ëª© : ì§ìœ„ëª…(pname)
 select pos.pname, count(emp.no) as cnt
 from pos, emp where pos.pcode = emp.pcode
 group by pos.pname 
 order by pos.pname; 
 
--- Áı°èÇÔ¼ö : count, sum, avg, max, min
+-- ì§‘ê³„í•¨ìˆ˜ : count, sum, avg, max, min
 
--- Á¤·ÄÇÏ¿© Ãâ·Â : order by ÄÃ·³¸í;
--- ¹İµå½Ã order by ±¸ÀıÀº ¸Ç ³¡¿¡´Ù ÁöÁ¤ÇØ¾ßÇÏ¸ç, Ãâ·ÂµÇ´Â Ç×¸ñÀÌ¾î¾ß ÇÔ
-select * from emp order by name desc;   -- desc:³»¸²Â÷¼ø, »ı·« ¶Ç´Â asc:¿À¸§Â÷¼ø
+-- ì •ë ¬í•˜ì—¬ ì¶œë ¥ : order by ì»¬ëŸ¼ëª…;
+-- ë°˜ë“œì‹œ order by êµ¬ì ˆì€ ë§¨ ëì—ë‹¤ ì§€ì •í•´ì•¼í•˜ë©°, ì¶œë ¥ë˜ëŠ” í•­ëª©ì´ì–´ì•¼ í•¨
+select * from emp order by name desc;   -- desc:ë‚´ë¦¼ì°¨ìˆœ, ìƒëµ ë˜ëŠ” asc:ì˜¤ë¦„ì°¨ìˆœ
 
--- ÁıÇÕ¿¬»ê½Ã¿¡´Â ¿¬»êÇÏ´Â µÎ °³ÀÇ Å×ÀÌºíÀÇ ±¸Á¶°¡ °°°Å³ª
--- ¿¬»êÇÏ´Â ÄÃ·³Å¸ÀÔÀÌ °°¾Æ¾ß ÇÔ.
--- ÁıÇÕ¿¬»ê UNION(ÇÕÁıÇÕ), INTERSECT(±³ÁıÇÕ), MINUS(Â÷ÁıÇÕ) 
+-- ì§‘í•©ì—°ì‚°ì‹œì—ëŠ” ì—°ì‚°í•˜ëŠ” ë‘ ê°œì˜ í…Œì´ë¸”ì˜ êµ¬ì¡°ê°€ ê°™ê±°ë‚˜
+-- ì—°ì‚°í•˜ëŠ” ì»¬ëŸ¼íƒ€ì…ì´ ê°™ì•„ì•¼ í•¨.
+-- ì§‘í•©ì—°ì‚° UNION(í•©ì§‘í•©), INTERSECT(êµì§‘í•©), MINUS(ì°¨ì§‘í•©) 
 create view uni_view as 
 (select no, pcode from emp union select no, pcode from emp2);
 select * from uni_view;
@@ -257,3 +257,30 @@ create view min_view2 as
 (select * from emp2 minus select * from emp);
 select * from min_view1;
 select * from min_view2;
+
+
+-- í…Œì´ë¸” ìƒì„±
+create table member(no int not null, id varchar(20) primary key, pw varchar(300), 
+		name varchar(100), birth timestamp, email varchar(300));
+-- ì‹œí€€ìŠ¤ ìƒì„±        
+create sequence c##test123.mem_seq increment by 1 start with 1 minvalue 1 maxvalue 9999 nocycle;
+
+-- ë°ì´í„° ì¶”ê°€
+insert into member values (mem_seq.nextval, 'kim', '1234', 'ê¹€ê¸°íƒœ', '1981-12-25', 'kkt@gmail.com');
+insert into member values (mem_seq.nextval, 'park', '1004', 'ë°•ë™ìˆ˜', '1998-03-25', 'park@naver.com');
+insert into member values (mem_seq.nextval, 'lee', '1212', 'ì´ì—°ì •', '1979-08-15', 'lee@daum.net');
+insert into member values (mem_seq.nextval, 'cho', '2848', 'ì¡°ëŒ€ì‹ ', '1989-04-05', 'cho@gmail.com');
+insert into member values (mem_seq.nextval, 'yu', '7979', 'ìœ ì •í™˜', '1995-10-15', 'yu@naver.com');
+insert into member values (mem_seq.nextval, 'bae', '0909', 'ë°°ê³¤í¬', '1999-03-26', 'bae@gmail.com');
+
+-- ë°ì´í„° ê²€ìƒ‰
+select * from member;
+
+select id, name, birth from member 
+where birth>='1980-01-01' and birth<='1989-12-31';
+
+select id, name, birth from member 
+where birth between '1980-01-01' and '1989-12-31';
+
+select id, name, birth from member 
+where id like '%e%';

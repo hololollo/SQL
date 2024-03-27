@@ -160,7 +160,7 @@ select * from emp2;
 --no컬럼을 기본키로 설정
 alter table emp2 modify no int primary key;
 
-select a.no, a.name, b.pcode, b.pname from emp a inner join pos b on  a.pcode=b.pcode
+select a.no, a.name, b.pcode, b.pname from emp a inner join pos b on  a.pcode=b.pcode;
 
 --시퀀스 삭제
 drop sequence emp_seq;
