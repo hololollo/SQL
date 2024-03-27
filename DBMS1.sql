@@ -45,9 +45,6 @@ insert into sal values('E1010',3150000,'2022-05-01','2022-05-31');
 ----종합실습------
 ---member1테이블 만들기--
 create table member1(id varchar(12) primary key,pw varchar(12) not null,name varchar(20) not null, addr varchar(100), tel varchar(20) not null, regday date default sysdate);
---member1테이블 확인--
-select * from member1;
-drop table member1;
 
 --member1 값 넣기--
 insert into member1 values('bgh','a1234,''배곤희','신사동 912','010-1111-2222','2023-09-13');
@@ -61,13 +58,14 @@ insert into member1 values('ljh','d666','이정희','독산1동 75','010-7777-88
 insert into member1 values('ljw','e964','이종우','상계동 777','02-5555-2222','2023-09-05');
 insert into member1 values('jib','h369','장인범','쌍문3동 888','010-8888-9999','2023-09-16');
 alter table member1 add pt int default 0;
+
 select * from member1;
+--테이블 삭제
+drop table member1;
 
 ---도서(book1)table 만들기--
 create table book1(bookid int primary key ,bookkind varchar(3) not null,booktitle varchar(100) not null, bookprice int not null,bookcount int not null,author varchar(100),pubcon varchar(40),pubdate date);
 --book1 table 확인--
-select * from book1;
-drop table book1;
 --시퀀스 생성--
 create sequence bseq increment by 1 start with 1;
 --도서(book1) 데이터 값 넣기--
@@ -82,7 +80,10 @@ insert into book1 values (bseq.nextval,'HC',   '난중일기',14000,30,'이순�
 insert into book1 values (bseq.nextval,'TC',   '진짜쓰는실무엑셀',20000,10,'전진권','제이펍','2022-02-15');
 insert into book1 values (bseq.nextval,'TC',   '빅데이터인공지능',25000,15,'박해선','한빛미디어','2020-12-21');
 
-
+select * from book1;
+--테이블, 시퀸스 삭제
+drop table book1;
+drop sequence bseq;
 
 
 
@@ -113,12 +114,13 @@ insert into sales values(sseq.nextval, 2, 'lyj', 1, null, sysdate);
 insert into sales values(sseq.nextval, 1, 'jib', 3, null, sysdate);
 
 update sales set money=(select bookprice from book1 where bookid=sales.bno)*amount;
---9번 거래 : 100800, 수량 : 8, 도서가격 : 12600
+--ex) 9번 거래 : 100800, 수량 : 8, 도서가격 : 12600
 select bookprice from book1 where bookid=4;
 
 
 insert into sales values(sseq.nextval, 1, 'kkt', 2, null, sysdate); 
 
 select * from sales;
+--테이블, 시퀸스 삭제
 drop table sales;
 drop sequence sseq;
