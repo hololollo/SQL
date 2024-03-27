@@ -117,7 +117,6 @@ update sales set money=(select bookprice from book1 where bookid=sales.bno)*amou
 --ex) 9번 거래 : 100800, 수량 : 8, 도서가격 : 12600
 select bookprice from book1 where bookid=4;
 
-
 insert into sales values(sseq.nextval, 1, 'kkt', 2, null, sysdate); 
 
 select * from sales;
