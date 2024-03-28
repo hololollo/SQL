@@ -1,6 +1,9 @@
 create database kh;
 show databases;
 use kh;
+
+-- 엑셀파일 - 종합실습1
+
 -- 회원테이블 생성
 create table member(id varchar(12), pw varchar(12), name varchar(20), address varchar(100), tel varchar(20), reg_date datetime default current_timestamp);
 
@@ -38,7 +41,7 @@ insert into book values (default,'TC', '빅데이터인공지능', 25000, 15, '�
 select * from book;
 -- 판매테이블 만들기
 create table sales(sno int auto_increment primary key, bno int not null, id varchar(12) not null, amount int default 1 not null, money int, salesday timestamp default current_timestamp); 
-
+-- 오라클은 money 값 넣는방법이 두가지. mySQL은 무조건 null값으로만 넣어야 한다.
 insert into sales values(default, 1, 'bgh', 1, null, default);
 insert into sales values(default, 2, 'lmk', 1, null, default);
 insert into sales values(default, 1, 'lsh', 2, null, default);
@@ -57,4 +60,34 @@ insert into sales values(default, 1, 'lmk', 3, null, default);
 insert into sales values(default, 2, 'jib', 2, null, default);
 insert into sales values(default, 2, 'lyj', 1, null, default);
 insert into sales values(default, 1, 'jib', 3, null, default);
+
+
+-- mySQL / mariaDB 특징 / select 해서 update하는 경우만.
+SET sql_safe_updates = 0; 
+-- update시 검색하여 갱신하는 작업을 보호하는 것을 끈다.
+update sales set money=(select bookprice from book where bookid=sales.bno)*amount;
+-- 또는 조인 이용방법 : update sales inner join book on sales.bno = book.bookid set sales.money = bookbookprice * sales.amount where sales.bno = book.bookid;
+SET sql_safe_updates = 1; -- update시 검색하여 갱신하는 작업을 보호하는 것을 켠다.
+
+
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 1;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 2;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 3;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 4;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 5;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 6;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 7;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 8;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 9;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 10;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 11;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 12;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 13;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 14;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 15;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 16;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 17;
+-- update sales set money=(select bookprice from book where bookid=sales.bno)*amount where sno = 18;
+-- 확인
 select * from sales;
+drop table sales;

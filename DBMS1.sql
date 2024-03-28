@@ -13,6 +13,7 @@ select * from sal;
 alter table sal rename column "to_date" to "TO_DATE";
 
 create table book(bookid number(10) primary key ,bookkind varchar(3) not null,booktitle varchar(50) not null, bookcount number(5) not null,author varchar(20),pubcon varchar(20),pubdate date);
+desc book;
 drop table book;
 --시퀀스 생성--
 create sequence seq increment by 1 start with 1minvalue 1maxvalue 9999 nocycle;
@@ -64,23 +65,23 @@ select * from member1;
 drop table member1;
 
 ---도서(book1)table 만들기--
-create table book1(bookid int primary key ,bookkind varchar(3) not null,booktitle varchar(100) not null, bookprice int not null,bookcount int not null,author varchar(100),pubcon varchar(40),pubdate date);
+create table book(bookid int primary key ,bookkind varchar(3) not null,booktitle varchar(100) not null, bookprice int not null,bookcount int not null,author varchar(100),pubcon varchar(40),pubdate date);
 --book1 table 확인--
 --시퀀스 생성--
 create sequence bseq increment by 1 start with 1;
 --도서(book1) 데이터 값 넣기--
-insert into book1 values (bseq.nextval,'IT','이것이 자바다'   ,30000,   10,   '신용권',   '한빛미디어','2021-08-20');
-insert into book1 values (bseq.nextval,'IT',   '자바웹개발워크북',31500,19,'구멍가게코딩단','남가람북스','2022-08-04');
-insert into book1 values (bseq.nextval,'NV',   '하얼빈',   14400,15,'김훈','문학동네','2022-08-03');
-insert into book1 values (bseq.nextval,'NV','불편한편의점',   12600,10,'김호연','나무옆의자','2022-08-10');
-insert into book1 values (bseq.nextval,'DV',   '역행자',   15750,8,'자청','웅진출판',   '2022-05-30');
-insert into book1 values (bseq.nextval,'DV',   '자소서바이블',18000,15,'이형','엔알디','2022-08-25');
-insert into book1 values (bseq.nextval,'HC',   '벌거벗은한국사',17500,10,   'tvn','프런트페이지','2022-08-22');
-insert into book1 values (bseq.nextval,'HC',   '난중일기',14000,30,'이순신','스타북스','2022-07-27');
-insert into book1 values (bseq.nextval,'TC',   '진짜쓰는실무엑셀',20000,10,'전진권','제이펍','2022-02-15');
-insert into book1 values (bseq.nextval,'TC',   '빅데이터인공지능',25000,15,'박해선','한빛미디어','2020-12-21');
-
-select * from book1;
+insert into book values (bseq.nextval,'IT','이것이 자바다'   ,30000,   10,   '신용권',   '한빛미디어','2021-08-20');
+insert into book values (bseq.nextval,'IT',   '자바웹개발워크북',31500,19,'구멍가게코딩단','남가람북스','2022-08-04');
+insert into book values (bseq.nextval,'NV',   '하얼빈',   14400,15,'김훈','문학동네','2022-08-03');
+insert into book values (bseq.nextval,'NV','불편한편의점',   12600,10,'김호연','나무옆의자','2022-08-10');
+insert into book values (bseq.nextval,'DV',   '역행자',   15750,8,'자청','웅진출판',   '2022-05-30');
+insert into book values (bseq.nextval,'DV',   '자소서바이블',18000,15,'이형','엔알디','2022-08-25');
+insert into book values (bseq.nextval,'HC',   '벌거벗은한국사',17500,10,   'tvn','프런트페이지','2022-08-22');
+insert into book values (bseq.nextval,'HC',   '난중일기',14000,30,'이순신','스타북스','2022-07-27');
+insert into book values (bseq.nextval,'TC',   '진짜쓰는실무엑셀',20000,10,'전진권','제이펍','2022-02-15');
+insert into book values (bseq.nextval,'TC',   '빅데이터인공지능',25000,15,'박해선','한빛미디어','2020-12-21');
+desc book;
+select * from book;
 --테이블, 시퀸스 삭제
 drop table book1;
 drop sequence bseq;
